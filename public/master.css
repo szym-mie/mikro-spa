@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@300;400;600&display=swap');
+
+* {
+    font-family: 'IBM Plex Sans';
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes fade-in-page {
+    0% { 
+        opacity: 0%;
+        transform: translateY(1em);
+    }
+    100% { 
+        opacity: 100%; 
+        transform: translateY(0em);
+    }
+}
+
+.fade-in-page section {
+    animation-name: fade-in-page;
+    animation-duration: 1.4s;
+    animation-delay: 0.1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-fill-mode: both;
+    animation-play-state: running;
+}
+
+main {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+header, section, footer {
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+}
+
+header *, section *, footer * {
+    grid-column: 2;
+}
+
+input, label {
+    height: 2em;
+}
+
+input[type="text"], input[type="email"] {
+    border: none;
+    border-bottom: solid #a0a0a0 2px;
+    transition: border-bottom 0.3s;
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+    border: none;
+    border-bottom: solid black 2px;
+}
+
+.split-v {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.split-lcol {
+    grid-column: 1;
+}
+
+.split-rcol {
+    grid-column: 2;
+}
+
+.margin-00h {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.margin-05h {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.margin-10h {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.margin-20h {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.margin-00v {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.margin-05v {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.margin-10v {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.margin-20v {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic { 
+    font-style: italic;
+}
+
+.inverse {
+    background-color: #000;
+}
+
+.inverse * {
+    color: #fff;
+}
+
+span {
+    width: min-content;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+h2 {
+    font-size: 3em;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+div.code {
+    background-color: #f2ede6;
+    border-radius: .5em;
+    padding: 1em;
+}
+
+div.code pre {
+    font-family: 'IBM Plex Mono';
+    margin: 0;
+}
+
+.nav-to {
+    height: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.nav-to p {
+    font-weight: 600;
+}
+
+.nav-to:hover {
+    background-color: #fff200fc;
+    box-shadow: 0 0 1em #fff2008c;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flex-align-start {
+    justify-content: flex-start;
+}
+
+.flex-align-end {
+    justify-content: flex-end;
+}
+
+.shadow {
+    box-shadow: 0em 1em 2em #00000040;
+}
