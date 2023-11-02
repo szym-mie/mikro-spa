@@ -1,14 +1,83 @@
 <section id="js-examples">
     <h2>JS Examples</h2>
-    <div class="split-v">
-        <div class="split-lcol code">
+    <div class="split-v margin-10v">
+        <div class="split-lcol code margin-10h">
             <pre>
 const element = document.getElementById('element')
-element.innerText = 'Hello JS!'</pre>
+element.innerText = 'Hello JS!'
+            </pre>
         </div>
-        <div class="split-rcol">
+        <div class="split-rcol margin-10h">
             <p>
                 Here you can see how to set text in an element.
+            </p>
+        </div>
+    </div>
+    <div class="split-v margin-10v">
+        <div class="split-lcol code margin-10h">
+            <pre>
+const myIdElement = document.querySelector('#my-id')
+const allClassElementList = document.querySelectorAll('.all-class')
+const divElementList = document.querySelectorAll('div')
+            </pre>
+        </div>
+        <div class="split-rcol margin-10h">
+            <p>
+                Query any element on your page. Be careful though, these return a <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">NodeList</a> instead of an array - you would need to use different methods to access the elements...
+            </p>
+        </div>
+    </div>
+    <div class="split-v margin-10v">
+        <div class="split-lcol code margin-10h">
+            <pre>
+const arrayFromList = [...document.querySelector('div')]
+const firstElement = arrayFromList[0]
+            </pre>
+        </div>
+        <div class="split-rcol margin-10h">
+            <p>
+                ...or convert to an array using spread operator! You can also use spread to create variadic argument functions.
+            </p>
+        </div>
+    </div>
+    <div class="split-v margin-10v">
+        <div class="split-lcol code margin-10h">
+            <pre>
+const numberArray = Array.from(new Array(10), (_, index) => index)
+const doubleArray = numberArray.map(n => n * 2)
+const evenArray = numberArray.filter(n => n % 2 == 0)
+const sumOfArray = numberArray.reduce((acc, n) => acc + n)
+const remainderObject = Object.groupBy(numberArray, n => n % 3 + 1)
+            </pre>
+        </div>
+        <div class="split-rcol margin-10h">
+            <p>
+                Javascript offers a lot in terms of functional programming. You can easily write concise code with just arrays and objects.
+            </p>
+        </div>
+    </div>
+    <div class="split-v margin-10v">
+        <div class="split-lcol code margin-10h">
+            <pre>
+const url = 'https://wdai-mikro-szym-mie.netlify.app/endpoint/users.json'
+const headers = { 'Content-Type': 'application/json' }
+fetch(url, { headers })
+.then(response => response.json())
+.then(users => { alert(
+    'revid' + users.revid + '\n' + 
+    'users' + users.map.reduce((acc, {uid, firstname, lastname}) => 
+        uid + ' ' + firstname + ' ' + lastname + '\n'
+    ) 
+) })
+.catch(err => { alert(err) })
+            </pre>
+        </div>
+        <div class="split-rcol margin-10h">
+            <p>
+                Easily retrive data using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">fetch</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">Promises</a>!<br>
+                JavaScript offers simple and straightforward ways to implement asynchronous requests.<br><br>
+                Fetch can be used for any type of data, be it text, JSON or binary data. It also handles all HTTP methods, making it very suitable for REST APIs.<br><br>
+                As an example this site uses fetch to retrieve pages, their JSON data and also page's HTML content.
             </p>
         </div>
     </div>

@@ -1,0 +1,8 @@
+{
+    "revid": "f98aa3c58d0a83a1",
+    "map": [
+        { "uid": 2, "firstname": "John", "lastname": "Smith" },
+        { "uid": 4, "firstname": "Karen", "lastname": "Lopez" },
+        { "uid": 5, "firstname": "Joe", "lastname": "Doe" }
+    ]
+}
