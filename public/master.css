@@ -1,5 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@300;400;600&display=swap');
 
+@keyframes pre-hidden {
+    0% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+    }
+}
+
+#pre-hide {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    z-index: 100;
+}
+
+.pre-hidden {
+    animation-name: pre-hidden;
+    animation-duration: 0.5s;
+    animation-delay: 0.5s;
+    animation-timing-function: cubic-bezier(0.24, 0.43, 0.74, 1.0);
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+.pre-hidden-clear {
+    display: none;
+}
+
 * {
     font-family: 'IBM Plex Sans';
     font-weight: 400;
