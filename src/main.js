@@ -4,7 +4,7 @@ const defaultPageId = 'why-js'
 const getCurrentPageId = () => new URL(window.location).searchParams.get('id') || defaultPageId
 
 const mainElement = document.querySelector('main')
-const mainPageController = new PageController('/public/pages/', mainElement)
+const mainPageController = new PageController('pages/', mainElement)
 mainPageController.setPage(getCurrentPageId())
 
 const navToPage = (pageName) => () => mainPageController.setPage(pageName)

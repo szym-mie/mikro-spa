@@ -187,7 +187,7 @@ class PageController {
 
     static domParser = new DOMParser()
 
-    static defaultErrorPageMagazineUrl = '/public/error-pages/'
+    static defaultErrorPageMagazineUrl = 'error-pages/'
     static notFoundPageName = 'page-not-found'
     static underConstructionPageName = 'page-under-construction'
 }
