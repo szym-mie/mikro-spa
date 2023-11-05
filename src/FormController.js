@@ -1,10 +1,13 @@
-class FormController {
+import Observable from './observer/Observable.js'
+
+class FormController extends Observable {
     /**
      * @constructor
      * @param {string} formId form id
      * @param {newFormEntry[]} entryFactories array of entry factories
      */
     constructor (formId, ...entryFactories) {
+        super()
         this.formId = formId
         this.formElement = document.getElementById(formId)
         if (this.formElement === undefined) throw new TypeError('Could not find specified form.')
@@ -38,14 +41,22 @@ class FormController {
 
     /**
      * Try sending form.
+     * @return {boolean} is sent sucessfully
      */
     trySend () {
         if (this.isValid()) {
-            console.log(this.getDataMap())
-            // alert()
+            const dataMap = this.getDataMap()
+            const text = 'username: ' + dataMap.get('author-username') + '\n' +
+                'email: ' + dataMap.get('author-email') + '\n' +
+                'code title: ' + dataMap.get('code-title') + '\n' +
+                'code type: ' + dataMap.get('code-type') + '\n' +
+                'code src: ' + dataMap.get('code-src')
+            alert(text)
+            return true
         } else {
             [...this.getValidMap().entries()]
                 .map(([k, _v]) => k.trySetInvalid())
+            return false
         }
     }
 

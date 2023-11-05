@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@300;400;600&display=swap');
-
 :root {
     --color-primary: #ab5afc;
     --color-primary-dark: #7600a1;
@@ -11,6 +9,10 @@
     --color-gray-dark: #404040;
     --color-red: #b03030;
     --color-red-t25: #b0303040;
+    --color-yellow: #c0a300;
+    --color-yellow-t25: #c0a30040;
+    --color-green: #509030;
+    --color-green-t25: #50903040;
 }
 
 @keyframes pre-hidden {
@@ -196,6 +198,34 @@ label.radio:last-child > input[type="radio"] + span {
     border-radius: 0px 5px 5px 0px;
 }
 
+.flag {
+    color: var(--color-primary-dark);
+    background-color: var(--color-primary-dark-t25);
+    border-color: var(--color-primary);
+    transition: transform 0.3s cubic-bezier(.18,.89,.32,1.28);
+    transform: translate3d(-120%, 0, 0);
+    z-index: -1;
+    border: 2px solid;
+    border-radius: 5px;
+    height: 1.5em;
+    width: fit-content;
+}
+
+.flag.show {
+    transform: translate3d(0, 0, 0);
+}
+
+.grid-1x1 {
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 100%;
+}
+
+.grid-1x1 > * {
+    grid-row: 1;
+    grid-column: 1;
+}
+
 .split-v {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -251,6 +281,46 @@ label.radio:last-child > input[type="radio"] + span {
 .margin-20v {
     margin-top: 2em;
     margin-bottom: 2em;
+}
+
+.padding-00v {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.padding-05v {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.padding-10v {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.padding-20v {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.padding-00h {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.padding-05h {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.padding-10h {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.padding-20h {
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 .bold {
@@ -348,4 +418,9 @@ div.code pre::selection, div.code textarea::selection {
 
 .inner-shadow {
     box-shadow: inset 0em 0em 3em 0em #000000;
+}
+
+.inner-shadow-white {
+    /* box-shadow: inset 0em 0em 1em 0.5em #ffffff; */
+    overflow: hidden;
 }

@@ -17,21 +17,51 @@ const mainElement = document.querySelector('main')
 const mainPageController = new PageController('pages/', mainElement)
 mainPageController.setPage(getCurrentPageId())
 
-let submitExampleFormController
+const submitExampleForm = {
+    contoller: undefined,
+    invalidFlag: undefined,
+    doneFlag: undefined,
+    indicatorTimeout: undefined
+}
 
 const bindSubmitExampleFormController = () => {
-    submitExampleFormController = new FormController(
+    submitExampleForm.invalidFlag = document.getElementById('form-invalid')
+    submitExampleForm.doneFlag = document.getElementById('form-done')
+
+    const showDoneFlag = () => {
+        submitExampleForm.doneFlag.classList.add('show')
+        submitExampleForm.invalidFlag.classList.remove('show')
+    }
+
+    const showInvalidFlag = () => {
+        submitExampleForm.doneFlag.classList.remove('show')
+        submitExampleForm.invalidFlag.classList.add('show')
+    }
+
+    const hideFlags = () => {
+        submitExampleForm.doneFlag.classList.remove('show')
+        submitExampleForm.invalidFlag.classList.remove('show')
+    }
+
+    submitExampleForm.controller = new FormController(
         'form-submit-example',
         FormController.textEntry('code-src'),
         FormController.textEntry('author-username'),
         FormController.textEntry('author-email'),
         FormController.textEntry('code-title'),
         FormController.radioEntry('code-type'),
-        FormController.buttonEntry('submit', _ => { submitExampleFormController.trySend() }))
+        FormController.buttonEntry('submit', _ => {
+            if (submitExampleForm.controller.trySend()) {
+                showDoneFlag()
+                setTimeout(() => { hideFlags() }, 5000)
+            } else {
+                showInvalidFlag()
+            }
+        }))
 }
 
 const unbindSubmitExampleFormController = () => {
-    submitExampleFormController = undefined
+    clearTimeout(submitExampleForm.indicatorTimeout)
 }
 
 const pageObserver = new PageObserver(
