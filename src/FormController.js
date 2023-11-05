@@ -25,7 +25,7 @@ class FormController {
      * @return {Map<FormEntry, boolean>} validity map
      */
     getValidMap () {
-        return new WeakMap(this.entries.map(entry => [entry, entry.isValid()]))
+        return new Map(this.entries.map(entry => [entry, entry.isValid()]))
     }
 
     /**
@@ -44,7 +44,8 @@ class FormController {
             console.log(this.getDataMap())
             // alert()
         } else {
-            console.log(this.getValidMap())
+            [...this.getValidMap().entries()]
+                .map(([k, _v]) => k.trySetInvalid())
         }
     }
 
@@ -66,6 +67,7 @@ class FormController {
      */
     static setEntryValue (entry, _id, value) {
         entry.value = value
+        entry.tryClearInvalid()
     }
 
     /**
@@ -197,12 +199,19 @@ class FormEntry {
             .every(elem => elem.checkValidity())
     }
 
-    updateValid () {
+    trySetInvalid () {
         const isValid = this.isValid()
         this.elementMap.forEach(elem => {
             const classList = elem.classList
             if (!isValid) classList.add('invalid')
-            else classList.remove('invalid')
+        })
+    }
+
+    tryClearInvalid () {
+        const isValid = this.isValid()
+        this.elementMap.forEach(elem => {
+            const classList = elem.classList
+            if (isValid) classList.remove('invalid')
         })
     }
 
