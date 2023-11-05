@@ -1,19 +1,56 @@
 <section id="submit-examples">
     <h2>Submit Examples</h2>
     <p>Send us your ideas for interesting examples, cool snippets or obscure tricks in JavaScript!</p>
-    <form action="/" class="split-v">
-        <!-- <textarea name="code-src" id="code-src" cols="30" rows="10"></textarea> -->
-        <div class="split-lcol">
-            <label for="author-username">Username</label><br>
-            <input type="text" name="author-username" id="author-username" placeholder="JohnDoe420">
+    <div class="split-v">
+        <div class="split-lcol margin-20v">
+            <form id="form-submit-example" class="split-v">
+                <div class="code inner-shadow">
+                    <textarea name="code-src" id="code-src" cols="30" rows="10" spellcheck="false" autocomplete="off" placeholder="Your source code..."></textarea>
+                </div>
+                <div class="split-lcol margin-05v">
+                    <label for="author-username">Username</label><br>
+                    <input type="text" name="author-username" id="author-username" placeholder="JohnDoe420" required>
+                </div>
+                <div class="split-rcol margin-05v">
+                    <label for="author-email">Email</label><br>
+                    <input type="email" name="author-email" id="author-email" placeholder="john.doe@email.com" required>
+                </div>
+                <div class="split-lcol margin-05v">
+                    <label for="code-title">Title</label><br>
+                    <input type="text" name="code-title" id="code-title" placeholder="My example" required>
+                </div>
+                <div class="split-rcol margin-05v">
+                    <label for="code-type">Category</label><br>
+                    <div class="flex-row">
+                        <label class="radio" for="code-type-example">
+                            <input type="radio" name="code-type" id="code-type-example" value="example" required checked>
+                            <span>Example</span>
+                        </label>
+                        <label class="radio" for="code-type-snippet">
+                            <input type="radio" name="code-type" id="code-type-snippet" value="snippet" required>
+                            <span>Snippet</span>
+                        </label>
+                        <label class="radio" for="code-type-trick">
+                            <input type="radio" name="code-type" id="code-type-trick" value="trick" required>
+                            <span>Trick</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="split-lcol margin-20v">
+
+                </div>
+                <div class="split-rcol margin-20v">
+                    <input type="button" name="submit" value="Submit">
+                </div>
+            </form>
         </div>
-        <div class="split-rcol">
-            <label for="author-email">Email</label><br>
-            <input type="email" name="author-email" id="author-email" placeholder="john.doe@email.com">
+        <div class="split-rcol margin-20h">
+            <p>Here are some suggestions for making the best code samples:</p>
+            <ul>
+                <li>Add comments to make your code readable.</li>
+                <li>Describe what you're doing - especially when presenting tricks.</li>
+                <li></li>
+            </ul>
         </div>
-        <input type="radio" name="code-type" id="code-type" value="example">
-        <input type="radio" name="code-type" id="code-type" value="snippet">
-        <input type="radio" name="code-type" id="code-type" value="trick">
-        <input type="submit" value="Submit">
-    </form>
+    </div>
 </section>

@@ -1,4 +1,6 @@
-class PageController {
+import Observable from './observer/Observable.js'
+
+class PageController extends Observable {
     /**
      * Create a page controller for a container element.
      * @constructor
@@ -6,6 +8,7 @@ class PageController {
      * @param {Element} containerElement dom element which will contain the page
      */
     constructor (pageMagazineUrl, containerElement) {
+        super()
         this.pageMagazineUrl = pageMagazineUrl
         this.errorPageMagazineUrl = ''
         this.containerElement = containerElement
@@ -18,16 +21,21 @@ class PageController {
      * @param {string} pageName name of the page
      */
     async setPage (pageName) {
-        this.currentPageName = pageName
-        const pageUrl = this.getPageUrl(pageName, 'json')
-        console.log(pageName, pageUrl)
-        const pageData = await this.getPageData(pageUrl)
-        const pageTitle = pageData.title
-        const pageContent = this.parsePageContent(await this.getPageContent(pageData))
+        if (this.currentPageName === pageName) return
 
-        this.updateTitle(pageTitle)
+        this.notifyObservers('pop')
+        this.currentPageName = pageName
+
+        const pageUrl = this.getPageUrl(pageName, 'json')
+        const pageData = await this.getPageData(pageUrl)
+        const pageContent = this.parsePageContent(await this.getPageContent(pageData))
+        const pageTitle = pageData.title
+
         this.updateContainer(pageContent)
+        this.updateTitle(pageTitle)
         this.updateUrl(pageName)
+
+        this.notifyObservers('push')
     }
 
     /**
