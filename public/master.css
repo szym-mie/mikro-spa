@@ -356,6 +356,10 @@ h3 {
     font-size: 2em;
 }
 
+img {
+    width: 100%;
+}
+
 div.code {
     color: var(--color-primary-white);
     background-color: #404040;
@@ -422,6 +426,6 @@ div.code pre::selection, div.code textarea::selection {
 }
 
 .inner-shadow-white {
-    /* box-shadow: inset 0em 0em 1em 0.5em #ffffff; */
+    box-shadow: inset 0em 0em 1em 0.5em #ffffff;
     overflow: hidden;
 }
