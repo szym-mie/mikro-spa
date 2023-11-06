@@ -13,14 +13,17 @@ class PageController extends Observable {
         this.errorPageMagazineUrl = ''
         this.containerElement = containerElement
         this.currentPageName = null
+
+        this.registerOnPopState()
     }
 
     /**
      * Navigate to a page.
      * @async
      * @param {string} pageName name of the page
+     * @param {boolean} rewind don't push history state
      */
-    async setPage (pageName) {
+    async setPage (pageName, rewind = false) {
         if (this.currentPageName === pageName) return
 
         this.notifyObservers('pop')
@@ -33,7 +36,7 @@ class PageController extends Observable {
 
         this.updateContainer(pageContent)
         this.updateTitle(pageTitle)
-        this.updateUrl(pageName)
+        if (!rewind) this.updateUrl(pageName)
 
         this.notifyObservers('push')
     }
@@ -68,7 +71,16 @@ class PageController extends Observable {
      * @param {string} pageName name of the page
      */
     updateUrl (pageName) {
-        window.history.pushState(null, null, this.getPageLink())
+        window.history.pushState({ pageName }, null, this.getPageLink())
+    }
+
+    /**
+     * Register to set page on history navigation event.
+     */
+    registerOnPopState () {
+        window.addEventListener(
+            'popstate',
+            ({ state }) => { this.setPage(state.pageName, true) })
     }
 
     /**
