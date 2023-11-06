@@ -427,5 +427,8 @@ div.code pre::selection, div.code textarea::selection {
 
 .inner-shadow-white {
     box-shadow: inset 0em 0em 1em 0.5em #ffffff;
+}
+
+.hide-overflow {
     overflow: hidden;
 }
