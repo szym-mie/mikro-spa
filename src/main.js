@@ -18,7 +18,7 @@ const mainPageController = new PageController('pages/', mainElement)
 mainPageController.setPage(getCurrentPageId())
 
 const submitExampleForm = {
-    contoller: undefined,
+    controller: undefined,
     invalidFlag: undefined,
     doneFlag: undefined,
     indicatorTimeout: undefined
