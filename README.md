@@ -19,13 +19,10 @@ listeners - controllers rely on observers heavily. You then can harness the
 power of that approach by binding/unbinding your own reactives and manage
 state.
 
-<<<<<<< HEAD
 Other than that, there are also Pages - HTML document paired up with JSON
 metadata, that will be accessed by a `PageController`. You can add hooks to
 each page with JS functions in page controler definition.
 
-=======
->>>>>>> 3bb3b57391193f3615ab18ffad9c601f47c18974
 Nevertheless you will need to implement quite a lot of your own functions and
 solutions - there is a form controller, but everything else is up to you to
 build.
